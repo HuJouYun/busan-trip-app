@@ -87,9 +87,30 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
 .checklist label{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1px solid #f0e8d8;border-radius:16px;padding:10px;margin:8px 0;font-size:14px;line-height:1.45}
 .checklist input{margin-top:3px;accent-color:#73b9e3}
 .bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-top:1px solid rgba(180,190,200,.35)}
-.bottom-nav div{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
-.bottom-nav a{text-decoration:none;color:#607280;text-align:center;border-radius:18px;padding:8px 1px;font-size:10px;font-weight:900}
-.bottom-nav span{display:block;font-size:18px;margin-bottom:2px}.bottom-nav a.active{background:#e8f6ff;color:#1f6f9f}
+.bottom-nav div{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.bottom-nav a{text-decoration:none;color:#607280;text-align:center;border-radius:16px;padding:7px 0;font-size:9px;font-weight:900}
+.bottom-nav span{display:block;font-size:17px;margin-bottom:2px}.bottom-nav a.active{background:#e8f6ff;color:#1f6f9f}
+
+.map-wrap{position:relative;height:430px;border-radius:28px;overflow:hidden;background:
+  linear-gradient(145deg,#dff4ff 0%,#f7fcff 45%,#fff1e4 100%);
+  border:1px solid rgba(255,255,255,.95);box-shadow:inset 0 0 0 1px rgba(120,180,210,.16)}
+.map-sea{position:absolute;right:-80px;top:-30px;width:270px;height:520px;background:linear-gradient(180deg,#a9ddf7,#dff6ff);border-radius:45% 0 0 55%;opacity:.75}
+.map-land{position:absolute;left:-30px;top:20px;width:340px;height:390px;background:linear-gradient(135deg,#fff9e8,#f4ead8);border-radius:38% 48% 44% 35%;box-shadow:0 20px 50px rgba(90,120,140,.08)}
+.map-line{position:absolute;left:78px;top:82px;width:238px;height:260px;border-left:3px dashed rgba(69,132,168,.35);border-bottom:3px dashed rgba(69,132,168,.35);border-radius:0 0 0 90px;transform:rotate(-8deg)}
+.pin{position:absolute;transform:translate(-50%,-100%);z-index:2;text-decoration:none;color:#17496a}
+.pin i{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50% 50% 50% 10px;background:#fff;transform:rotate(-45deg);box-shadow:0 8px 18px rgba(40,80,110,.2);border:2px solid #9ed4f3}
+.pin i span{transform:rotate(45deg);font-style:normal;font-size:16px}
+.pin b{position:absolute;left:50%;top:37px;transform:translateX(-50%);white-space:nowrap;background:rgba(255,255,255,.9);border:1px solid #edf0f0;border-radius:999px;padding:4px 7px;font-size:11px;box-shadow:0 5px 12px rgba(0,0,0,.06)}
+.route-list{display:grid;gap:8px;margin-top:12px}
+.route-list a{display:flex;justify-content:space-between;gap:8px;text-decoration:none;background:#fff;border:1px solid #f0e8d8;border-radius:16px;padding:10px 12px;color:#26323a;font-size:13px;font-weight:800}
+.route-list small{color:#6c7c86;font-weight:700}
+.fx-card{background:linear-gradient(135deg,#eaf7ff,#fff7e3);border:1px solid #dceef8;border-radius:22px;padding:14px;margin-top:10px}
+.fx-row{display:grid;grid-template-columns:1fr 44px 1fr;align-items:end;gap:8px}
+.fx-field label{display:block;font-size:12px;color:#5d7180;font-weight:900;margin-bottom:5px}
+.fx-field input{width:100%;border:1px solid #d9e8ef;border-radius:16px;padding:12px;font-size:16px;font-weight:900;background:#fff;color:#17496a}
+.swap{border:0;border-radius:50%;height:42px;width:42px;background:#17496a;color:#fff;font-size:18px;font-weight:900}
+.fx-meta{margin-top:9px;color:#607280;font-size:12px;line-height:1.55}
+
 @media(min-width:720px){.app{max-width:520px}.hero{margin-top:12px;border-radius:34px}}
 </style>
 </head>
@@ -99,7 +120,7 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
   <div class="mascot">🐧</div>
   <div class="kicker">BUSAN 4D3N MOBILE APP</div>
   <h1>釜山四天三夜</h1>
-  <p>6/4（四）－6/7（日）｜海雲台住宿｜Klook × 小紅書 × Notion 風格行程懶人包</p>
+  <p>6/4（四）－6/7（日）</p>
   <div class="pills"><span class="pill">🌊 海景</span><span class="pill">☕ 咖啡</span><span class="pill">🍲 美食</span><span class="pill">🧳 親子</span><span class="pill">🎫 PASS</span></div>
   <div class="countdown">
     <div><b>去程航班</b><span>7C6154｜02:50 → 06:10</span></div>
@@ -199,27 +220,54 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
   </article>
 </section>
 
-<section id="prep" class="page section">
+
+<section id="map" class="page section">
   <article class="card">
-    <div class="day-head"><div class="day-num">🧳</div><div><h2>行前準備 / 行李清單</h2><small>出發前一天快速確認</small></div></div>
-    <div class="prep-grid">
-      <div class="prep"><b>✈️ 證件票券</b><small>護照、機票、住宿資訊、PASS QR Code、膠囊列車預約</small></div>
-      <div class="prep"><b>💳 金錢支付</b><small>信用卡、韓幣現金、T-money、退稅護照</small></div>
-      <div class="prep"><b>👶 親子用品</b><small>尿布、濕紙巾、備用衣物、小零食、推車雨罩</small></div>
-      <div class="prep"><b>🌦️ 天氣用品</b><small>薄外套、雨傘、防曬、遮陽帽、好走鞋</small></div>
-      <div class="prep"><b>📱 電子設備</b><small>行動電源、充電線、轉接頭、eSIM / 網卡</small></div>
-      <div class="prep"><b>🧴 盥洗藥品</b><small>牙刷牙膏、常備藥、腸胃藥、OK繃</small></div>
+    <div class="day-head"><div class="day-num">🗺️</div><div><h2>釜山地圖總覽</h2><small>所有景點集中在同一張旅遊地圖</small></div></div>
+    <div class="chips"><span class="chip">🌊 海雲台</span><span class="chip">🛍️ 南浦</span><span class="chip">🚃 清沙浦</span><span class="chip">🌉 廣安里</span></div>
+    <div class="map-wrap">
+      <div class="map-sea"></div><div class="map-land"></div><div class="map-line"></div>
+      <a class="pin" style="left:70%;top:24%;" href="https://naver.me/xpjNTctd" target="_blank"><i><span>🏨</span></i><b>海雲台民宿</b></a>
+      <a class="pin" style="left:76%;top:33%;" href="https://map.naver.com/p/search/Duplit%20Haeundae" target="_blank"><i><span>☕</span></i><b>Duplit</b></a>
+      <a class="pin" style="left:68%;top:43%;" href="https://map.naver.com/p/search/Blue%20Line%20Park%20Mipo" target="_blank"><i><span>🚃</span></i><b>尾浦/清沙浦</b></a>
+      <a class="pin" style="left:58%;top:57%;" href="https://map.naver.com/p/search/Gwangalli%20Beach" target="_blank"><i><span>🌉</span></i><b>廣安里</b></a>
+      <a class="pin" style="left:42%;top:42%;" href="https://map.naver.com/p/search/Seomyeon%20Busan" target="_blank"><i><span>🛍️</span></i><b>西面</b></a>
+      <a class="pin" style="left:36%;top:49%;" href="https://map.naver.com/p/search/Bujeon%20Market" target="_blank"><i><span>🍙</span></i><b>釜田市場</b></a>
+      <a class="pin" style="left:22%;top:60%;" href="https://map.naver.com/p/search/Jagalchi%20Market" target="_blank"><i><span>🦀</span></i><b>札嘎其/南浦</b></a>
+      <a class="pin" style="left:19%;top:72%;" href="https://map.naver.com/p/search/Songdo%20Marine%20Cable%20Car" target="_blank"><i><span>🚡</span></i><b>松島纜車</b></a>
+      <a class="pin" style="left:33%;top:69%;" href="https://map.naver.com/p/search/Port%20Village%20Busan" target="_blank"><i><span>🏖️</span></i><b>Port Village</b></a>
+      <a class="pin" style="left:18%;top:30%;" href="https://naver.me/FfsduKvu" target="_blank"><i><span>🍲</span></i><b>富人家</b></a>
     </div>
-    <div class="note">住宿提供毛巾、洗髮精、沐浴乳、護髮乳和香皂；牙刷牙膏需自備。</div>
+    <div class="note">此為手機版行程總覽示意圖；點擊圖釘或下方清單可直接開啟 Naver Map 導航。</div>
+    <div class="route-list">
+      <a href="https://naver.me/FfsduKvu" target="_blank">🍲 富人家牛腿骨豬肉湯飯 <small>Naver</small></a>
+      <a href="https://map.naver.com/p/search/ARTE%20MUSEUM%20Busan" target="_blank">🎨 Arte Museum <small>Naver</small></a>
+      <a href="https://map.naver.com/p/search/SPAO%20Nampo%20Busan" target="_blank">🧳 SPAO 南浦商圈 <small>Naver</small></a>
+      <a href="https://map.naver.com/p/search/Lotte%20Department%20Store%20Gwangbok%20Busan" target="_blank">🏬 樂天百貨光復店 <small>Naver</small></a>
+      <a href="https://map.naver.com/p/search/Skyline%20Luge%20Busan" target="_blank">🏎️ Skyline Luge Busan <small>Naver</small></a>
+      <a href="https://map.naver.com/p/search/Gwangalli%20Beach" target="_blank">🌉 廣安里海水浴場 <small>Naver</small></a>
+      <a href="https://map.naver.com/p/search/Songdo%20Marine%20Cable%20Car" target="_blank">🚡 松島海上纜車 <small>Naver</small></a>
+      <a href="https://naver.me/xpjNTctd" target="_blank">🏨 海雲台民宿 <small>Naver</small></a>
+    </div>
   </article>
-  <article class="card checklist">
-    <div class="day-head"><div class="day-num">✅</div><div><h2>出門前勾選</h2><small>可直接在手機上打勾</small></div></div>
-    <label><input type="checkbox">護照 / 機票 / 住宿密碼已截圖</label>
-    <label><input type="checkbox">Visit Busan Pass、膠囊列車預約已截圖</label>
-    <label><input type="checkbox">富人家、民宿、SPAO、樂天百貨 Naver Map 已收藏</label>
-    <label><input type="checkbox">牙刷牙膏、尿布、行動電源已放入隨身包</label>
-    <label><input type="checkbox">回程 16:00 取行李、16:40 到機場提醒已設定</label>
+</section>
+
+
+<section id="tools" class="page section">
+  <article class="card">
+    <div class="day-head"><div class="day-num">🧰</div><div><h2>小工具</h2><small>旅途中常用快速工具</small></div></div>
+    <div class="fx-card">
+      <div class="day-head" style="margin-bottom:8px;"><div class="day-num" style="width:44px;height:44px;border-radius:16px;font-size:18px;">💱</div><div><h2 style="font-size:16px;">即時匯率換算器</h2><small>台幣 ⇄ 韓元，開網頁時自動抓最新匯率</small></div></div>
+      <div class="fx-row">
+        <div class="fx-field"><label id="fromLabel">TWD 台幣</label><input id="fromAmount" type="number" inputmode="decimal" value="1000"></div>
+        <button class="swap" id="swapFx" type="button">⇄</button>
+        <div class="fx-field"><label id="toLabel">KRW 韓元</label><input id="toAmount" type="number" inputmode="decimal"></div>
+      </div>
+      <div class="fx-meta" id="fxMeta">匯率載入中；若離線會使用預設估算 1 TWD ≈ 42.5 KRW。</div>
+    </div>
+
   </article>
+  
 
   <article class="card checklist">
     <div class="day-head"><div class="day-num">👶</div><div><h2>寶寶行李清單</h2><small>隨身包 🎒｜確認液體皆小於 100ml</small></div></div>
@@ -275,7 +323,7 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
     <a href="#day3" data-page="day3"><span>🌉</span>D3</a>
     <a href="#day4" data-page="day4"><span>✈️</span>D4</a>
     <a href="#prep" data-page="prep"><span>🧳</span>準備</a>
-    <a href="#day1" id="topBtn"><span>🏠</span>首頁</a>
+    
   </div>
 </nav>
 
@@ -289,7 +337,6 @@ function showPage(id){
   scrollTo({top:0,behavior:'smooth'});
 }
 navs.forEach(n=>n.addEventListener('click',e=>{e.preventDefault();showPage(n.dataset.page);}));
-document.getElementById('topBtn').addEventListener('click',e=>{e.preventDefault();showPage('day1');});
 document.querySelectorAll('.place button').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
 function countdown(){
   const target=new Date('2026-06-07T19:10:00+09:00');
@@ -301,6 +348,70 @@ function countdown(){
   el.textContent=`${d}天 ${h}時 ${m}分`;
 }
 countdown();setInterval(countdown,60000);
+
+let fxRate = 42.5;
+let fxMode = 'TWD_KRW';
+const fromAmount = document.getElementById('fromAmount');
+const toAmount = document.getElementById('toAmount');
+const fxMeta = document.getElementById('fxMeta');
+const fromLabel = document.getElementById('fromLabel');
+const toLabel = document.getElementById('toLabel');
+function fmt(n){return Math.round(n).toLocaleString('zh-TW');}
+function calcFrom(){
+  const v = parseFloat(fromAmount.value || 0);
+  toAmount.value = fxMode === 'TWD_KRW' ? fmt(v * fxRate).replace(/,/g,'') : (v / fxRate).toFixed(0);
+}
+function calcTo(){
+  const v = parseFloat(toAmount.value || 0);
+  fromAmount.value = fxMode === 'TWD_KRW' ? (v / fxRate).toFixed(0) : fmt(v * fxRate).replace(/,/g,'');
+}
+function setFxLabels(){
+  fromLabel.textContent = fxMode === 'TWD_KRW' ? 'TWD 台幣' : 'KRW 韓元';
+  toLabel.textContent = fxMode === 'TWD_KRW' ? 'KRW 韓元' : 'TWD 台幣';
+}
+if(fromAmount && toAmount){
+  fromAmount.addEventListener('input', calcFrom);
+  toAmount.addEventListener('input', calcTo);
+  document.getElementById('swapFx').addEventListener('click', ()=>{
+    fxMode = fxMode === 'TWD_KRW' ? 'KRW_TWD' : 'TWD_KRW';
+    const a = fromAmount.value; fromAmount.value = toAmount.value; toAmount.value = a;
+    setFxLabels(); calcFrom();
+  });
+  fetch('https://open.er-api.com/v6/latest/TWD')
+    .then(r=>r.json())
+    .then(data=>{
+      if(data && data.rates && data.rates.KRW){
+        fxRate = data.rates.KRW;
+        fxMeta.textContent = `即時匯率：1 TWD ≈ ${fxRate.toFixed(2)} KRW｜資料更新：${data.time_last_update_utc || 'online'}`;
+      } else {
+        fxMeta.textContent = '即時匯率暫時無法取得，使用預設估算 1 TWD ≈ 42.5 KRW。';
+      }
+      calcFrom();
+    })
+    .catch(()=>{
+      fxMeta.textContent = '離線或匯率來源暫時無法連線，使用預設估算 1 TWD ≈ 42.5 KRW。';
+      calcFrom();
+    });
+}
+
 </script>
 </body>
 </html>
+    <div class="note">匯率會在有網路時自動更新；若離線，會使用預設估算值，實際刷卡或換錢匯率仍以銀行／換錢所為準。</div>
+  </article>
+</section>
+
+<section id="prep" class="page section">
+  <article class="card">
+    <div class="day-head"><div class="day-num">🧳</div><div><h2>行前準備 / 行李清單</h2><small>出發前一天快速確認</small></div></div>
+    <div class="prep-grid">
+      <div class="prep"><b>✈️ 證件票券</b><small>護照、機票、住宿資訊、PASS QR Code、膠囊列車預約</small></div>
+      <div class="prep"><b>💳 金錢支付</b><small>信用卡、韓幣現金、T-money、退稅護照</small></div>
+      <div class="prep"><b>👶 親子用品</b><small>尿布、濕紙巾、備用衣物、小零食、推車雨罩</small></div>
+      <div class="prep"><b>🌦️ 天氣用品</b><small>薄外套、雨傘、防曬、遮陽帽、好走鞋</small></div>
+      <div class="prep"><b>📱 電子設備</b><small>行動電源、充電線、轉接頭、eSIM / 網卡</small></div>
+      <div class="prep"><b>🧴 盥洗藥品</b><small>牙刷牙膏、常備藥、腸胃藥、OK繃</small></div>
+    </div>
+    <div class="note">住宿提供毛巾、洗髮精、沐浴乳、護髮乳和香皂；牙刷牙膏需自備。</div>
+
+
