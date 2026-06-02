@@ -4,279 +4,255 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>釜山四天三夜｜手機行程 App</title>
+<title>釜山四天三夜｜手機旅遊 App</title>
 <style>
 :root{
-  --bg:#f7f2e8; --card:#fffdf8; --ink:#23313b; --muted:#64717d;
-  --blue:#70b7e6; --blue2:#dff3ff; --navy:#17496a; --pink:#f7c8d5;
-  --cream:#fff5dd; --green:#bddccf; --line:#9bcdea; --shadow:0 14px 34px rgba(49,83,116,.14);
+  --cream:#fffaf0; --cream2:#f7f0df; --blue:#9ed4f3; --blue2:#e8f7ff;
+  --pink:#ffdce6; --pink2:#fff0f4; --sage:#c9ddd4; --mauve:#c9b9c7;
+  --ink:#26323a; --muted:#687680; --card:#fffef9; --line:#9ecfe9;
+  --shadow:0 14px 34px rgba(56,84,110,.13); --radius:26px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:
-radial-gradient(circle at 0 0,#dff3ff 0 24%,transparent 25%),
-radial-gradient(circle at 100% 4%,#ffe2ea 0 18%,transparent 19%),
-linear-gradient(180deg,#f7fbff 0%,#fbf5e8 50%,#fff7f7 100%)}
-.app{max-width:480px;margin:0 auto;padding-bottom:96px}
-.hero{padding:26px 18px 16px;border-radius:0 0 34px 34px;background:linear-gradient(135deg,#d9f1ff,#fff5dd 55%,#ffe3eb);box-shadow:var(--shadow);position:relative;overflow:hidden}
-.hero:after{content:"🌊";position:absolute;right:18px;top:22px;font-size:58px;opacity:.32}
-.kicker{font-weight:900;color:#357aa6;font-size:12px;letter-spacing:.12em}
-h1{margin:7px 0 6px;font-size:30px;line-height:1.08}
-.hero p{margin:0;color:#527083;font-size:14px}
-.countdown{margin-top:14px;border-radius:22px;padding:12px;background:rgba(255,255,255,.72);display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.countdown b{display:block;font-size:12px;color:#537083}.countdown span{font-size:15px;font-weight:900;color:#17496a}
-.tabs{position:sticky;top:0;z-index:10;display:flex;gap:8px;overflow:auto;padding:12px 14px;background:rgba(247,242,232,.78);backdrop-filter:blur(14px)}
-.tab{border:0;border-radius:999px;padding:9px 14px;background:#fff;color:#507086;font-weight:900;box-shadow:0 6px 18px rgba(49,83,116,.08);white-space:nowrap}
-.tab.active{background:#17496a;color:#fff}
-.section{padding:14px 14px 0}
-.panel{display:none;animation:fade .35s ease}
-.panel.active{display:block}
-@keyframes fade{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}
-.card{background:rgba(255,253,248,.96);border:1px solid rgba(255,255,255,.88);border-radius:26px;padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 0% 0%,#dff4ff 0 22%,transparent 23%),
+    radial-gradient(circle at 100% 8%,#ffe3ec 0 18%,transparent 19%),
+    linear-gradient(180deg,#f8fcff 0%,var(--cream) 48%,#fff6f8 100%);
+}
+.app{max-width:480px;margin:0 auto;padding-bottom:102px}
+.hero{
+  padding:26px 18px 18px;
+  border-radius:0 0 36px 36px;
+  background:linear-gradient(135deg,#ddf4ff 0%,#fff3d8 54%,#ffe2eb 100%);
+  box-shadow:var(--shadow);
+  position:relative;overflow:hidden;
+}
+.hero:before{content:"BUSAN";position:absolute;right:-10px;bottom:8px;font-size:58px;font-weight:1000;color:rgba(75,139,180,.09);letter-spacing:.05em}
+.mascot{position:absolute;right:16px;top:18px;font-size:52px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.10))}
+.kicker{font-size:12px;font-weight:1000;letter-spacing:.12em;color:#397da6}
+h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
+.hero p{margin:0;color:#557181;font-size:14px;line-height:1.55}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.pill{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.68);border:1px solid rgba(255,255,255,.8);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;color:#46697d}
+.countdown{margin-top:13px;border-radius:22px;background:rgba(255,255,255,.72);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.countdown b{display:block;font-size:12px;color:#5e7482}.countdown span{font-weight:1000;color:#17496a;font-size:14px}
+.page{display:none;animation:fade .28s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:.25;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section{padding:15px 14px 0}
+.card{
+  background:rgba(255,254,249,.96);
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:var(--radius);
+  padding:16px;margin-bottom:16px;
+  box-shadow:var(--shadow);
+}
 .day-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
-.day-num{width:58px;height:58px;border-radius:20px;background:linear-gradient(135deg,var(--blue),#bce8fb);display:flex;align-items:center;justify-content:center;color:#fff;font-size:21px;font-weight:1000}
-h2,h3{margin:0}.day-head h2{font-size:18px}.day-head small{color:var(--muted)}
+.day-num{width:58px;height:58px;border-radius:20px;background:linear-gradient(135deg,#76bce5,#c9ecfb);display:flex;align-items:center;justify-content:center;color:white;font-size:21px;font-weight:1000;box-shadow:0 10px 20px rgba(82,150,190,.24)}
+.day-head h2{font-size:18px;margin:0;line-height:1.25}
+.day-head small{display:block;color:var(--muted);margin-top:3px;font-size:12px}
 .chips{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
 .chip{border-radius:999px;padding:7px 10px;background:#eaf7ff;color:#2472a4;border:1px solid #caecff;font-size:12px;font-weight:900}
-.weather{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.weather div{background:#eef8ff;border-radius:16px;text-align:center;padding:10px 6px;font-size:12px;color:#537083}.weather b{display:block;color:#17496a;font-size:16px}
-.carousel{display:flex;gap:10px;overflow-x:auto;padding:4px 0 12px;scroll-snap-type:x mandatory}
-.photo{min-width:72%;height:150px;border-radius:24px;overflow:hidden;scroll-snap-align:center;position:relative;background:linear-gradient(135deg,#9bd6f5,#fff0c8)}
-.photo:nth-child(2){background:linear-gradient(135deg,#ffd8e3,#cfefff)}
-.photo:nth-child(3){background:linear-gradient(135deg,#bfe7d7,#fff4bd)}
-.photo:before{content:attr(data-label);position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.82);border-radius:999px;padding:7px 10px;font-weight:900;font-size:12px;color:#17496a}
-.photo:after{content:attr(data-emoji);position:absolute;right:18px;top:22px;font-size:54px;filter:drop-shadow(0 5px 12px rgba(0,0,0,.12))}
+.weatherbox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 4px}
+.weatherbox div{border-radius:20px;padding:12px;background:linear-gradient(135deg,#eef9ff,#fff8e7);border:1px solid #e2f2fa}
+.weatherbox b{display:block;color:#17496a;font-size:12px;margin-bottom:3px}.weatherbox span{font-size:15px;font-weight:1000}
 .timeline{position:relative;margin-top:12px}
-.timeline:before{content:"";position:absolute;left:42px;top:10px;bottom:12px;width:3px;border-radius:3px;background:linear-gradient(var(--line),#f5c7d5);animation:grow 1s ease both}
+.timeline:before{content:"";position:absolute;left:42px;top:10px;bottom:12px;width:3px;border-radius:3px;background:linear-gradient(var(--line),#f4cad5);animation:grow 1s ease both}
 @keyframes grow{from{transform:scaleY(0);transform-origin:top}to{transform:scaleY(1)}}
 .stop{display:grid;grid-template-columns:84px 1fr;gap:10px;position:relative;margin:12px 0;align-items:start}
 .time{display:flex;gap:5px;align-items:center;font-weight:1000;color:#2c6f9d;font-size:13px;z-index:2}
-.dot{width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-shadow:0 0 0 4px #eff9ff;animation:pop .45s ease both}
-@keyframes pop{from{transform:scale(.3)}to{transform:scale(1)}}
-.place{background:#fff;border:1px solid #eee9dd;border-radius:18px;overflow:hidden}
+.dot{width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #79bee6;box-shadow:0 0 0 4px #eff9ff;animation:pop .42s ease both}
+@keyframes pop{from{transform:scale(.35)}to{transform:scale(1)}}
+.place{background:#fff;border:1px solid #f0e8da;border-radius:19px;overflow:hidden}
 .place button{width:100%;border:0;background:transparent;text-align:left;padding:12px;font:inherit;color:inherit}
-.place b{font-size:15px}.summary{margin-top:5px;color:#64717d;font-size:13px;line-height:1.5}
-.details{display:none;border-top:1px dashed #eadfce;padding:0 12px 12px;color:#52616b;font-size:13px;line-height:1.65}
+.place b{font-size:15px}.summary{margin-top:5px;color:#64717d;font-size:13px;line-height:1.52}
+.details{display:none;border-top:1px dashed #eadfce;padding:0 12px 12px;color:#52616b;font-size:13px;line-height:1.7}
 .place.open .details{display:block}
 .transfer{margin:7px 0 7px 84px;display:inline-flex;gap:6px;align-items:center;border:1px dashed #b7d8ea;background:#f2f9fd;color:#607b8b;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900}
 .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
 .btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;background:#17496a;color:#fff;border-radius:999px;padding:8px 11px;font-weight:900;font-size:12px}
 .btn.alt{background:#fff0f5;color:#9a3f59;border:1px solid #ffd2df}
-.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.food{background:#fff;border-radius:20px;padding:12px;border:1px solid #f1e7d8}.food b{display:block}.food small{color:#64717d;line-height:1.5}
-.info-list{display:grid;gap:10px}.info{background:#fff;border-radius:18px;padding:12px;border:1px solid #f0e8d8;font-size:14px;line-height:1.65}
-.budget-row{display:flex;justify-content:space-between;background:#fff;border-radius:16px;padding:12px;margin:8px 0}.budget-row b:last-child{color:#2c6f9d}
-.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-top:1px solid rgba(180,190,200,.35)}
-.bottom-nav div{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.bottom-nav a{text-decoration:none;color:#607280;text-align:center;border-radius:18px;padding:8px 2px;font-size:11px;font-weight:900}.bottom-nav span{display:block;font-size:19px}.bottom-nav a.active{background:#e8f6ff;color:#1f6f9f}
+.sticker-row{display:flex;gap:8px;overflow:auto;padding:2px 0 10px}
+.sticker{min-width:max-content;background:#fff;border:1px solid #f0e7db;border-radius:18px;padding:9px 11px;font-size:13px;font-weight:900;color:#536978;box-shadow:0 8px 16px rgba(80,80,80,.06)}
+.food-grid,.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.food,.prep{background:#fff;border-radius:20px;padding:12px;border:1px solid #f1e7d8}
+.food b,.prep b{display:block;font-size:14px}.food small,.prep small{color:#64717d;line-height:1.55}
+.info{background:#fff;border-radius:18px;padding:12px;border:1px solid #f0e8d8;font-size:14px;line-height:1.7;margin:9px 0}
 .note{background:#fff7df;border:1px solid #ffe0a6;color:#6f5c25;border-radius:18px;padding:11px;font-size:13px;line-height:1.6;margin-top:10px}
+.budget-row{display:flex;justify-content:space-between;background:#fff;border-radius:16px;padding:12px;margin:8px 0}.budget-row b:last-child{color:#2c6f9d;text-align:right}
+.checklist label{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1px solid #f0e8d8;border-radius:16px;padding:10px;margin:8px 0;font-size:14px;line-height:1.45}
+.checklist input{margin-top:3px;accent-color:#73b9e3}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.88);backdrop-filter:blur(18px);border-top:1px solid rgba(180,190,200,.35)}
+.bottom-nav div{max-width:480px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.bottom-nav a{text-decoration:none;color:#607280;text-align:center;border-radius:18px;padding:8px 1px;font-size:10px;font-weight:900}
+.bottom-nav span{display:block;font-size:18px;margin-bottom:2px}.bottom-nav a.active{background:#e8f6ff;color:#1f6f9f}
 @media(min-width:720px){.app{max-width:520px}.hero{margin-top:12px;border-radius:34px}}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="hero">
+  <div class="mascot">🐧</div>
   <div class="kicker">BUSAN 4D3N MOBILE APP</div>
   <h1>釜山四天三夜</h1>
-  <p>6/4（四）－6/7（日）｜海雲台住宿｜5大1小親子自由行</p>
+  <p>6/4（四）－6/7（日）｜海雲台住宿｜Klook × 小紅書 × Notion 風格行程懶人包</p>
+  <div class="pills"><span class="pill">🌊 海景</span><span class="pill">☕ 咖啡</span><span class="pill">🍲 美食</span><span class="pill">🧳 親子</span><span class="pill">🎫 PASS</span></div>
   <div class="countdown">
     <div><b>去程航班</b><span>7C6154｜02:50 → 06:10</span></div>
     <div><b>回程倒數</b><span id="countdown">計算中...</span></div>
   </div>
 </header>
 
-<div class="tabs">
-  <button class="tab active" data-day="day1">Day 1</button>
-  <button class="tab" data-day="day2">Day 2</button>
-  <button class="tab" data-day="day3">Day 3</button>
-  <button class="tab" data-day="day4">Day 4</button>
-</div>
-
-<section id="days" class="section">
-  <div id="day1" class="panel active">
-    <article class="card">
-      <div class="day-head"><div class="day-num">D1</div><div><h2>6/4（四）海景藝術 × 南浦初見日</h2><small>機場早餐｜Arte Museum｜南浦｜樂天超市</small></div></div>
-      <div class="chips"><span class="chip">🎫 Arte Museum PASS</span><span class="chip">💱 MoneyBox / 友利 / 國民</span><span class="chip">☁️ 天氣出發前更新</span></div>
-      <div class="carousel"><div class="photo" data-label="Arte Museum" data-emoji="🎨"></div><div class="photo" data-label="南浦洞街景" data-emoji="🛍️"></div><div class="photo" data-label="札嘎其海鮮" data-emoji="🦀"></div></div>
-      <div class="timeline">
-        <div class="stop"><div class="time"><span class="dot"></span>06:10</div><div class="place"><button><b>抵達金海機場</b><div class="summary">入境、領行李，準備第一餐。</div></button><div class="details">濟州航空 7C6154｜02:50 台北起飛 → 06:10 釜山抵達。</div></div></div>
-        <div class="transfer">🚶 步行約 12–15min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button><b>富人家牛腿骨豬肉湯飯</b><div class="summary">抵達後早餐，行李多抓 15 分鐘步行。</div></button><div class="details">推薦：牛腿骨豬肉湯飯、豬肉湯飯、血腸湯飯。<div class="btns"><a class="btn" href="https://naver.me/59llSQ0f" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩28,000–35,000｜50min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>10:00</div><div class="place"><button><b>Arte Museum（PASS）</b><div class="summary">建議停留 1.5–2 小時。</div></button><div class="details">必拍：FLOWER、WATERFALL、BEACH、MOON。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/ARTE%20MUSEUM%20Busan" target="_blank">🗺️ 開導航</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩9,000–12,000｜15min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button><b>札嘎其＋BIFF</b><div class="summary">新東亞市場 85、87 號海鮮攤。</div></button><div class="details">推薦：元祖糖餅、魚糕、海鮮、紅豆奶油艾草麻吉。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Jagalchi%20Market" target="_blank">🗺️ 札嘎其</a><a class="btn alt" href="https://map.naver.com/p/search/BIFF%20Square" target="_blank">BIFF</a></div></div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button><b>南浦商圈逛街</b><div class="summary">SPAO 可寄物、Olive Young、EPT、光復路。</div></button><div class="details">推薦：南浦洞雪濃湯、味贊王鹽烤肉、李在模 PIZZA 2號店。Olive Young 滿 ₩15,000 可退稅。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button><b>樂天百貨 & 超市</b><div class="summary">Uniqlo、11F 空中花園休息。</div></button><div class="details">樂天超市滿 ₩100,000 可至服務台兌換購物袋。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Lotte%20Mart%20Gwangbok" target="_blank">🗺️ 開導航</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩28,000–38,000｜50min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>19:00</div><div class="place"><button><b>Check in 海雲台民宿</b><div class="summary">釜山 Coco Beach。</div></button><div class="details">地址：海雲台海邊路 291 號水晶海灘 710。密碼：2489*。</div></div></div>
-      </div>
-    </article>
-  </div>
-
-  <div id="day2" class="panel">
-    <article class="card">
-      <div class="day-head"><div class="day-num">D2</div><div><h2>6/5（五）列車 × 滑坡車冒險日</h2><small>膠囊列車｜Luge｜海岸列車｜汗蒸幕</small></div></div>
-      <div class="chips"><span class="chip">🎫 Skyline Luge</span><span class="chip">🎫 海岸列車</span><span class="chip">🎫 Club D Oasis</span></div>
-      <div class="carousel"><div class="photo" data-label="天空膠囊列車" data-emoji="🚃"></div><div class="photo" data-label="Skyline Luge" data-emoji="🏎️"></div><div class="photo" data-label="Club D Oasis" data-emoji="♨️"></div></div>
-      <div class="timeline">
-        <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button><b>起床整理</b></button><div class="details">準備膠囊列車票券與 PASS。</div></div></div>
-        <div class="transfer">🚕 約 ₩5,000｜5min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>07:30</div><div class="place"><button><b>大海鮑魚粥</b><div class="summary">早餐。</div></button><div class="details"><div class="btns"><a class="btn" href="https://map.naver.com/p/search/%EB%8C%80%EB%B0%94%EB%8B%A4%20%EC%A0%84%EB%B3%B5%EC%A3%BD%20%ED%95%B4%EC%9A%B4%EB%8C%80" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚶 步行 5min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>08:30</div><div class="place"><button><b>天空膠囊列車（已預約）</b><div class="summary">尾浦 → 清沙浦，提前 15 分鐘抵達。</div></button><div class="details">建議拍海景座位與清沙浦沿線景色。</div></div></div>
-        <div class="transfer">🚕 約 ₩18,000–25,000｜25min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>09:30</div><div class="place"><button><b>Skyline Luge Busan（PASS）</b></button><div class="details"><div class="btns"><a class="btn" href="https://map.naver.com/p/search/Skyline%20Luge%20Busan" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩15,000–22,000｜20min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button><b>燈塔烤鰻烤扇貝</b><div class="summary">午餐。</div></button><div class="details">推薦：起司烤扇貝、炭烤海鰻、海鮮拉麵。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>13:00</div><div class="place"><button><b>DIART Coffee</b></button><div class="details">必吃：土耳其蜂蜜奶油麵包。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button><b>Clamsand Busan</b></button><div class="details">貝殼奶油餅：常溫 5 天、冷藏 7 天、冷凍 1 個月，可帶上飛機。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>14:50</div><div class="place"><button><b>韓國版灌籃高手平交道</b></button><div class="details">海景鐵道打卡點，注意安全與人潮。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button><b>海岸列車（PASS）</b></button><div class="details">清沙浦 → 尾浦。</div></div></div>
-        <div class="transfer">🚶 步行 6min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>16:10</div><div class="place"><button><b>Mipojip 尾浦家醬蟹</b></button><div class="details">推薦：美女生醃醬海鮮套餐，8種醃醬海鮮、石鍋飯、12種小菜、海帶湯。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button><b>Club D Oasis（PASS）</b></button><div class="details">戶外溫泉與汗蒸幕共 4 小時。食堂推薦：甜米釀、焗蛋。3歲以下幼童免費。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Club%20D%20Oasis%20Busan" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚶 步行 8min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>21:00</div><div class="place"><button><b>民宿休息</b></button><div class="details">海雲台消夜：名品糖餅、60雞炸雞、水邊最高豬肉湯飯。</div></div></div>
-      </div>
-    </article>
-  </div>
-
-  <div id="day3" class="panel">
-    <article class="card">
-      <div class="day-head"><div class="day-num">D3</div><div><h2>6/6（六）西面購物 × 廣安里夜景日</h2><small>西面購物｜烤肉｜廣安里無人機秀</small></div></div>
-      <div class="chips"><span class="chip">☁️ 天氣出發前更新</span><span class="chip">🎆 20:00 無人機秀</span></div>
-      <div class="carousel"><div class="photo" data-label="西面購物" data-emoji="🛍️"></div><div class="photo" data-label="廣安里夜景" data-emoji="🌉"></div><div class="photo" data-label="Millac The Market" data-emoji="✨"></div></div>
-      <div class="timeline">
-        <div class="stop"><div class="time"><span class="dot"></span>07:30</div><div class="place"><button><b>起床整理</b></button></div></div>
-        <div class="transfer">🚕 約 ₩25,000–35,000｜45min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button><b>釜田市場早餐</b></button><div class="details">推薦：明卵飯捲、手工排骨肉餅、魚板、韓式熱湯。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Bujeon%20Market" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚶 步行 10min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>10:30</div><div class="place"><button><b>西面逛街</b></button><div class="details">Olive Young 西面旗艦店、Object、地下街、Musinsa。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>12:40</div><div class="place"><button><b>山莊1988燉排骨</b></button><div class="details">推薦：馬鈴薯排骨湯。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button><b>LaSoop</b></button><div class="details">三層樓大自然系咖啡廳休息。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button><b>83 Haechi 烤肉（現場排隊）</b></button><div class="details">推薦：Special Pork Belly、Pork Rinds、橫隔膜。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>17:00</div><div class="place"><button><b>釜山烤肋排（外帶）</b></button></div></div>
-        <div class="transfer">🚕 約 ₩18,000–25,000｜30min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button><b>廣安里海水浴場</b></button><div class="details">推薦：Nasari Sigdang 海鮮麵、La Feuille 麵包、All Sunday Bagel。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Gwangalli%20Beach" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>20:00</div><div class="place"><button><b>無人機表演</b></button><div class="details">Olive Young 廣安里店前的沙灘是最佳景觀位置，建議提早卡位。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>20:30</div><div class="place"><button><b>Millac The Market</b></button><div class="details">複合式新潮商場，餐廳咖啡廳、服飾配件。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Millac%20The%20Market" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩10,000–15,000｜15min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>21:00</div><div class="place"><button><b>回民宿</b></button></div></div>
-      </div>
-    </article>
-  </div>
-
-  <div id="day4" class="panel">
-    <article class="card">
-      <div class="day-head"><div class="day-num">D4</div><div><h2>6/7（日）海景收尾 × 港灣散步日</h2><small>Duplit｜松島纜車｜Port Village｜返台</small></div></div>
-      <div class="chips"><span class="chip">🎫 松島海上纜車 PASS</span><span class="chip">✈️ BR163 19:10</span><span class="chip">🧳 行李寄放</span></div>
-      <div class="carousel"><div class="photo" data-label="松島纜車" data-emoji="🚡"></div><div class="photo" data-label="Port Village" data-emoji="🏖️"></div><div class="photo" data-label="金海機場" data-emoji="✈️"></div></div>
-      <div class="timeline">
-        <div class="stop"><div class="time"><span class="dot"></span>08:00</div><div class="place"><button><b>起床整理</b></button></div></div>
-        <div class="transfer">🚶 步行 15min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button><b>Duplit 早午餐</b></button><div class="details">推薦：Duplit 早午餐拼盤、蒜香鮮菇奶油蝦、手工蛋糕。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Duplit%20Haeundae" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩25,000–35,000｜40min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button><b>釜山旅遊諮詢處</b></button><div class="details">寄放行李 10:00–17:00。</div></div></div>
-        <div class="transfer">🚕 約 ₩10,000–15,000｜20min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button><b>松島纜車（PASS）</b></button><div class="details">松島灣站 → 松島 Sky Park 站，單趟 15–20 分鐘。可順遊龍宮雲橋 ₩1,000，咖啡廳 EL 16.52。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Songdo%20Marine%20Cable%20Car" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩8,000–12,000｜15min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button><b>Port Village Busan</b></button><div class="details">歐洲港邊市集 × 小紅書打卡市集 × 韓國文青夜市，釜山港 1 號碼頭。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Port%20Village%20Busan" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-        <div class="transfer">🚕 約 ₩8,000–12,000｜15min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button><b>取行李</b></button></div></div>
-        <div class="transfer">🚕 約 ₩18,000–25,000｜30min</div>
-        <div class="stop"><div class="time"><span class="dot"></span>16:40</div><div class="place"><button><b>抵達金海機場</b></button><div class="details">辦理登機、退稅、最後採買。</div></div></div>
-        <div class="stop"><div class="time"><span class="dot"></span>19:10</div><div class="place"><button><b>BR163 起飛回台北</b></button><div class="details">長榮航空｜釜山 19:10 → 台北 20:35。金海機場國際航廈 Terminal I，桃園通常停靠第二航廈。</div></div></div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="food" class="section">
+<main>
+<section id="day1" class="page active section">
   <article class="card">
-    <div class="day-head"><div class="day-num">🍽️</div><div><h2>餐廳推薦卡片</h2><small>依行程順序整理</small></div></div>
-    <div class="food-grid">
-      <div class="food"><b>富人家牛腿骨湯飯</b><small>Day1早餐｜機場步行約 12–15min</small></div>
-      <div class="food"><b>新東亞市場 85/87</b><small>海鮮、活章魚、生魚片</small></div>
-      <div class="food"><b>燈塔烤鰻烤扇貝</b><small>起司烤扇貝、海鮮拉麵</small></div>
-      <div class="food"><b>Mipojip 尾浦家</b><small>醬蟹與醃醬海鮮拼盤</small></div>
-      <div class="food"><b>83 Haechi</b><small>特級豬五花、烤豬皮</small></div>
-      <div class="food"><b>Duplit</b><small>早午餐拼盤、手工蛋糕</small></div>
+    <div class="day-head"><div class="day-num">D1</div><div><h2>6/4（四）海景藝術 × 南浦初見日</h2><small>機場早餐｜Arte Museum｜南浦｜樂天超市</small></div></div>
+    <div class="chips"><span class="chip">🎫 Arte Museum PASS</span><span class="chip">💱 MoneyBox / 友利 / 國民</span></div>
+    <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲轉晴｜24° / 18°</span></div><div><b>穿搭提醒</b><span>薄外套＋好走鞋</span></div></div>
+    <div class="sticker-row"><span class="sticker">✈️ 抵達日</span><span class="sticker">🎨 藝術館</span><span class="sticker">🛍️ 南浦逛街</span><span class="sticker">🛒 樂天採買</span></div>
+    <div class="timeline">
+      <div class="stop"><div class="time"><span class="dot"></span>06:10</div><div class="place"><button><b>抵達金海機場</b><div class="summary">入境、領行李，準備第一餐。</div></button><div class="details">濟州航空 7C6154｜02:50 台北起飛 → 06:10 釜山抵達。</div></div></div>
+      <div class="transfer">🚶 步行約 12–15min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button><b>富人家牛腿骨豬肉湯飯</b><div class="summary">抵達後早餐，行李多抓 15 分鐘步行。</div></button><div class="details">推薦：牛腿骨豬肉湯飯、豬肉湯飯、血腸湯飯。<div class="btns"><a class="btn" href="https://naver.me/FfsduKvu" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚕 約 ₩28,000–35,000｜50min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>10:00</div><div class="place"><button><b>Arte Museum（PASS）</b><div class="summary">建議停留 1.5–2 小時。</div></button><div class="details">必拍：FLOWER、WATERFALL、BEACH、MOON。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/ARTE%20MUSEUM%20Busan" target="_blank">🗺️ 開導航</a></div></div></div></div>
+      <div class="transfer">🚕 約 ₩9,000–12,000｜15min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button><b>札嘎其＋BIFF</b><div class="summary">新東亞市場 85、87 號海鮮攤。</div></button><div class="details">推薦：元祖糖餅、魚糕、海鮮、紅豆奶油艾草麻吉。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Jagalchi%20Market" target="_blank">🗺️ 札嘎其</a><a class="btn alt" href="https://map.naver.com/p/search/BIFF%20Square" target="_blank">BIFF</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button><b>南浦商圈逛街</b><div class="summary">SPAO 可寄物、Olive Young、EPT、光復路。</div></button><div class="details">推薦：南浦洞雪濃湯、味贊王鹽烤肉、李在模 PIZZA 2號店。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/SPAO%20Nampo%20Busan" target="_blank">🗺️ SPAO 導航</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button><b>樂天百貨 & 超市</b><div class="summary">Uniqlo、11F 空中花園休息。</div></button><div class="details">樂天超市滿 ₩100,000 可至服務台兌換購物袋。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Lotte%20Department%20Store%20Gwangbok%20Busan" target="_blank">🗺️ 樂天百貨</a><a class="btn alt" href="https://map.naver.com/p/search/Lotte%20Mart%20Gwangbok" target="_blank">🛒 樂天超市</a></div></div></div></div>
+      <div class="transfer">🚕 約 ₩28,000–38,000｜50min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>19:00</div><div class="place"><button><b>Check in 海雲台民宿</b><div class="summary">釜山 Coco Beach。</div></button><div class="details">地址：海雲台海邊路 291 號水晶海灘 710。密碼：2489*。<div class="btns"><a class="btn" href="https://naver.me/xpjNTctd" target="_blank">🗺️ 民宿導航</a></div></div></div></div>
     </div>
   </article>
 </section>
 
-<section id="transport" class="section">
+<section id="day2" class="page section">
   <article class="card">
-    <div class="day-head"><div class="day-num">🚕</div><div><h2>交通與預估計程車費</h2><small>以實際路況與叫車平台為準</small></div></div>
-    <div class="info-list">
-      <div class="info">機場 → 富人家：步行約 12–15 分鐘。</div>
-      <div class="info">富人家 → Arte Museum：約 ₩28,000–35,000｜50 分鐘。</div>
-      <div class="info">Arte Museum → 南浦：約 ₩9,000–12,000｜15 分鐘。</div>
-      <div class="info">南浦 → 海雲台：約 ₩28,000–38,000｜50 分鐘。</div>
-      <div class="info">海雲台 → 西面：約 ₩25,000–35,000｜45 分鐘。</div>
-      <div class="info">西面 → 廣安里：約 ₩18,000–25,000｜30 分鐘。</div>
-      <div class="info">釜山旅遊諮詢處 → 金海機場：約 ₩18,000–25,000｜30 分鐘。</div>
+    <div class="day-head"><div class="day-num">D2</div><div><h2>6/5（五）列車 × 滑坡車冒險日</h2><small>膠囊列車｜Luge｜海岸列車｜汗蒸幕</small></div></div>
+    <div class="chips"><span class="chip">🎫 Skyline Luge</span><span class="chip">🎫 海岸列車</span><span class="chip">🎫 Club D Oasis</span></div>
+    <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲時晴｜27° / 18°</span></div><div><b>穿搭提醒</b><span>防曬＋備薄外套</span></div></div>
+    <div class="sticker-row"><span class="sticker">🚃 膠囊列車</span><span class="sticker">🏎️ 滑坡車</span><span class="sticker">☕ 咖啡</span><span class="sticker">♨️ 溫泉</span></div>
+    <div class="timeline">
+      <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button><b>起床整理</b></button><div class="details">準備膠囊列車票券與 PASS。</div></div></div>
+      <div class="transfer">🚕 約 ₩5,000｜5min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>07:30</div><div class="place"><button><b>大海鮑魚粥</b><div class="summary">早餐。</div></button><div class="details"><div class="btns"><a class="btn" href="https://map.naver.com/p/search/%EB%8C%80%EB%B0%94%EB%8B%A4%20%EC%A0%84%EB%B3%B5%EC%A3%BD%20%ED%95%B4%EC%9A%B4%EB%8C%80" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚶 步行 5min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>08:30</div><div class="place"><button><b>天空膠囊列車（已預約）</b><div class="summary">尾浦 → 清沙浦，提前 15 分鐘抵達。</div></button><div class="details">建議拍海景座位與清沙浦沿線景色。</div></div></div>
+      <div class="transfer">🚕 約 ₩18,000–25,000｜25min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>09:30</div><div class="place"><button><b>Skyline Luge Busan（PASS）</b></button><div class="details"><div class="btns"><a class="btn" href="https://map.naver.com/p/search/Skyline%20Luge%20Busan" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚕 約 ₩15,000–22,000｜20min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button><b>燈塔烤鰻烤扇貝</b><div class="summary">午餐。</div></button><div class="details">推薦：起司烤扇貝、炭烤海鰻、海鮮拉麵。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>13:00</div><div class="place"><button><b>DIART Coffee</b></button><div class="details">必吃：土耳其蜂蜜奶油麵包。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button><b>Clamsand Busan</b></button><div class="details">貝殼奶油餅：常溫 5 天、冷藏 7 天、冷凍 1 個月，可帶上飛機。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button><b>海岸列車（PASS）</b></button><div class="details">清沙浦 → 尾浦。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>16:10</div><div class="place"><button><b>Mipojip 尾浦家醬蟹</b></button><div class="details">美女生醃醬海鮮套餐：8種醃醬海鮮、石鍋飯、12種小菜、海帶湯。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button><b>Club D Oasis（PASS）</b></button><div class="details">戶外溫泉與汗蒸幕共 4 小時。食堂推薦：甜米釀、焗蛋。3歲以下幼童免費。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Club%20D%20Oasis%20Busan" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚶 步行 8min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>21:00</div><div class="place"><button><b>民宿休息</b></button><div class="details">海雲台消夜：名品糖餅、60雞炸雞、水邊最高豬肉湯飯。</div></div></div>
     </div>
   </article>
 </section>
 
-<section id="stay" class="section">
+<section id="day3" class="page section">
   <article class="card">
-    <div class="day-head"><div class="day-num">🏨</div><div><h2>住宿與行李</h2><small>Coco Beach｜海雲台</small></div></div>
-    <div class="info">地址：釜山海雲台區海雲台海邊路 291 號水晶海灘單位 710。密碼：2489*。提供毛巾、洗髮精、沐浴乳、護髮乳和香皂；需自備牙刷牙膏。</div>
-    <div class="note">Day1：南浦 SPAO 可寄物。Day4：釜山旅遊諮詢處寄放行李 10:00–17:00。</div>
+    <div class="day-head"><div class="day-num">D3</div><div><h2>6/6（六）西面購物 × 廣安里夜景日</h2><small>釜田市場｜西面｜廣安里無人機秀</small></div></div>
+    <div class="chips"><span class="chip">🎆 20:00 無人機秀</span><span class="chip">🛍️ 西面購物</span></div>
+    <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲時晴｜26° / 18°</span></div><div><b>穿搭提醒</b><span>逛街好走鞋</span></div></div>
+    <div class="sticker-row"><span class="sticker">🍙 市場早餐</span><span class="sticker">🛍️ 西面</span><span class="sticker">🥩 烤肉</span><span class="sticker">🌉 夜景</span></div>
+    <div class="timeline">
+      <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button><b>釜田市場早餐</b></button><div class="details">推薦：明卵飯捲、手工排骨肉餅、魚板、韓式熱湯。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Bujeon%20Market" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚶 步行 10min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>10:30</div><div class="place"><button><b>西面逛街</b></button><div class="details">Olive Young 西面旗艦店、Object、地下街、Musinsa。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>12:40</div><div class="place"><button><b>山莊1988燉排骨</b></button><div class="details">推薦：馬鈴薯排骨湯。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button><b>LaSoop</b></button><div class="details">三層樓大自然系咖啡廳休息。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button><b>83 Haechi 烤肉（現場排隊）</b></button><div class="details">推薦：Special Pork Belly、Pork Rinds、橫隔膜。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>17:00</div><div class="place"><button><b>釜山烤肋排（外帶）</b></button></div></div>
+      <div class="transfer">🚕 約 ₩18,000–25,000｜30min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button><b>廣安里海水浴場</b></button><div class="details">推薦：Nasari Sigdang 海鮮麵、La Feuille 麵包、All Sunday Bagel。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Gwangalli%20Beach" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>20:00</div><div class="place"><button><b>無人機表演</b></button><div class="details">Olive Young 廣安里店前沙灘是最佳景觀位置，建議提早卡位。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>20:30</div><div class="place"><button><b>Millac The Market</b></button><div class="details">複合式新潮商場，餐廳咖啡廳、服飾配件。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Millac%20The%20Market" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+    </div>
   </article>
 </section>
 
-<section id="budget" class="section">
+<section id="day4" class="page section">
   <article class="card">
-    <div class="day-head"><div class="day-num">💰</div><div><h2>預算與 PASS</h2><small>購物、退稅、換錢</small></div></div>
-    <div class="budget-row"><b>Day1 PASS</b><b>Arte Museum</b></div>
-    <div class="budget-row"><b>Day2 PASS</b><b>Luge / 海岸列車 / Club D</b></div>
-    <div class="budget-row"><b>Day4 PASS</b><b>松島海上纜車</b></div>
-    <div class="note">換錢：MoneyBox、友利換錢所、國民換錢所。Olive Young 單筆滿 ₩15,000 可退稅，樂天超市滿 ₩100,000 可兌換購物袋。</div>
+    <div class="day-head"><div class="day-num">D4</div><div><h2>6/7（日）海景收尾 × 港灣散步日</h2><small>Duplit｜松島纜車｜Port Village｜返台</small></div></div>
+    <div class="chips"><span class="chip">🎫 松島海上纜車 PASS</span><span class="chip">✈️ BR163 19:10</span><span class="chip">🧳 行李寄放</span></div>
+    <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲時晴｜22° / 16°</span></div><div><b>穿搭提醒</b><span>薄外套＋輕便</span></div></div>
+    <div class="sticker-row"><span class="sticker">☕ 早午餐</span><span class="sticker">🚡 纜車</span><span class="sticker">🏖️ 港灣市集</span><span class="sticker">✈️ 返台</span></div>
+    <div class="timeline">
+      <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button><b>Duplit 早午餐</b></button><div class="details">推薦：Duplit 早午餐拼盤、蒜香鮮菇奶油蝦、手工蛋糕。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Duplit%20Haeundae" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚕 約 ₩25,000–35,000｜40min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button><b>釜山旅遊諮詢處</b></button><div class="details">寄放行李 10:00–17:00。</div></div></div>
+      <div class="transfer">🚕 約 ₩10,000–15,000｜20min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button><b>松島纜車（PASS）</b></button><div class="details">松島灣站 → 松島 Sky Park 站，單趟 15–20 分鐘。可順遊龍宮雲橋 ₩1,000，咖啡廳 EL 16.52。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Songdo%20Marine%20Cable%20Car" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="transfer">🚕 約 ₩8,000–12,000｜15min</div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button><b>Port Village Busan</b></button><div class="details">歐洲港邊市集 × 小紅書打卡市集 × 韓國文青夜市，釜山港 1 號碼頭。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Port%20Village%20Busan" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button><b>取行李 → 前往機場</b></button><div class="details">計程車約 30 分鐘，建議 16:40 抵達金海機場。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>19:10</div><div class="place"><button><b>BR163 起飛回台北</b></button><div class="details">長榮航空｜釜山 19:10 → 台北 20:35。金海機場國際航廈 Terminal I，桃園通常停靠第二航廈。</div></div></div>
+    </div>
   </article>
 </section>
+
+<section id="prep" class="page section">
+  <article class="card">
+    <div class="day-head"><div class="day-num">🧳</div><div><h2>行前準備 / 行李清單</h2><small>出發前一天快速確認</small></div></div>
+    <div class="prep-grid">
+      <div class="prep"><b>✈️ 證件票券</b><small>護照、機票、住宿資訊、PASS QR Code、膠囊列車預約</small></div>
+      <div class="prep"><b>💳 金錢支付</b><small>信用卡、韓幣現金、T-money、退稅護照</small></div>
+      <div class="prep"><b>👶 親子用品</b><small>尿布、濕紙巾、備用衣物、小零食、推車雨罩</small></div>
+      <div class="prep"><b>🌦️ 天氣用品</b><small>薄外套、雨傘、防曬、遮陽帽、好走鞋</small></div>
+      <div class="prep"><b>📱 電子設備</b><small>行動電源、充電線、轉接頭、eSIM / 網卡</small></div>
+      <div class="prep"><b>🧴 盥洗藥品</b><small>牙刷牙膏、常備藥、腸胃藥、OK繃</small></div>
+    </div>
+    <div class="note">住宿提供毛巾、洗髮精、沐浴乳、護髮乳和香皂；牙刷牙膏需自備。</div>
+  </article>
+  <article class="card checklist">
+    <div class="day-head"><div class="day-num">✅</div><div><h2>出門前勾選</h2><small>可直接在手機上打勾</small></div></div>
+    <label><input type="checkbox">護照 / 機票 / 住宿密碼已截圖</label>
+    <label><input type="checkbox">Visit Busan Pass、膠囊列車預約已截圖</label>
+    <label><input type="checkbox">富人家、民宿、SPAO、樂天百貨 Naver Map 已收藏</label>
+    <label><input type="checkbox">牙刷牙膏、尿布、行動電源已放入隨身包</label>
+    <label><input type="checkbox">回程 16:00 取行李、16:40 到機場提醒已設定</label>
+  </article>
+</section>
+</main>
 </div>
 
 <nav class="bottom-nav">
   <div>
-    <a href="#days" class="active"><span>📅</span>每日</a>
-    <a href="#food"><span>🍽️</span>餐廳</a>
-    <a href="#transport"><span>🚕</span>交通</a>
-    <a href="#stay"><span>🧳</span>住宿</a>
-    <a href="#budget"><span>💰</span>預算</a>
+    <a href="#day1" class="active" data-page="day1"><span>🎨</span>D1</a>
+    <a href="#day2" data-page="day2"><span>🚃</span>D2</a>
+    <a href="#day3" data-page="day3"><span>🌉</span>D3</a>
+    <a href="#day4" data-page="day4"><span>✈️</span>D4</a>
+    <a href="#prep" data-page="prep"><span>🧳</span>準備</a>
+    <a href="#day1" id="topBtn"><span>🏠</span>首頁</a>
   </div>
 </nav>
 
 <script>
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.day).classList.add('active');
-    document.getElementById('days').scrollIntoView({behavior:'smooth'});
-  });
-});
-document.querySelectorAll('.place button').forEach(btn=>{
-  btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'));
-});
-const navLinks=[...document.querySelectorAll('.bottom-nav a')];
-const secs=navLinks.map(a=>document.querySelector(a.getAttribute('href')));
-function activeNav(){
-  let idx=0;
-  secs.forEach((s,i)=>{if(s && s.getBoundingClientRect().top<innerHeight*.35)idx=i});
-  navLinks.forEach(a=>a.classList.remove('active'));navLinks[idx].classList.add('active');
+const navs=[...document.querySelectorAll('.bottom-nav a[data-page]')];
+const pages=[...document.querySelectorAll('.page')];
+function showPage(id){
+  pages.forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  navs.forEach(n=>n.classList.toggle('active',n.dataset.page===id));
+  scrollTo({top:0,behavior:'smooth'});
 }
-addEventListener('scroll',activeNav,{passive:true});activeNav();
+navs.forEach(n=>n.addEventListener('click',e=>{e.preventDefault();showPage(n.dataset.page);}));
+document.getElementById('topBtn').addEventListener('click',e=>{e.preventDefault();showPage('day1');});
+document.querySelectorAll('.place button').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
 function countdown(){
   const target=new Date('2026-06-07T19:10:00+09:00');
   const now=new Date();
   const diff=target-now;
   const el=document.getElementById('countdown');
-  if(diff<=0){el.textContent='已起飛';return}
+  if(diff<=0){el.textContent='已起飛';return;}
   const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000);
   el.textContent=`${d}天 ${h}時 ${m}分`;
 }
