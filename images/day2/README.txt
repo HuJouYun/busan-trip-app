@@ -1,0 +1,12 @@
+請把照片放在此資料夾，並使用以下檔名：
+morning-hotel.jpg
+abalone-porridge.jpg
+capsule-train.jpg
+luge.jpg
+lighthouse-seafood.jpg
+diart.jpg
+clamsand.jpg
+beach-train.jpg
+mipojip.jpg
+clubd.jpg
+night-rest.jpg
