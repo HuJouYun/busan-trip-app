@@ -195,6 +195,178 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
 }
 
 @media(min-width:720px){.app{max-width:520px}.hero{margin-top:12px;border-radius:34px}}
+
+/* ===== v13 screenshot-like UI refresh ===== */
+:root{
+  --cream:#fffaf0; --cream2:#f7f0df; --blue:#1674c8; --blue2:#e8f7ff;
+  --sky:#dff4ff; --pink:#ffdce6; --pink2:#fff0f4; --yellow:#ffd35c;
+  --ink:#1f2d3a; --muted:#667680; --card:#ffffff; --line:#1273c6;
+  --shadow:0 16px 36px rgba(40,83,120,.14); --radius:26px;
+}
+body{
+  background:
+    radial-gradient(circle at 10% -10%,#ffffff 0 20%,transparent 21%),
+    linear-gradient(180deg,#dff4ff 0%,#fffaf0 48%,#fff7f8 100%);
+}
+.app{max-width:520px;margin:0 auto;padding-bottom:106px}
+.hero{
+  min-height:470px;
+  padding:28px 18px 18px 132px;
+  border-radius:0 0 34px 34px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.20),rgba(255,255,255,.86) 70%),
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Gwangalli%20Beach%20and%20Gwangan%20Bridge%20Busan.jpg');
+  background-size:cover;
+  background-position:center top;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.70) 0 36%,rgba(255,255,255,.25) 65%,rgba(255,255,255,.6));z-index:0}
+.hero>*{position:relative;z-index:1}
+.boogi-icon{
+  position:absolute;
+  left:12px;
+  top:58px;
+  width:132px;
+  height:196px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:30px;
+  box-shadow:0 16px 34px rgba(0,0,0,.12);
+  background:#ffd51b;
+  z-index:2;
+}
+.kicker{font-size:14px;font-weight:1000;letter-spacing:.09em;color:#0c66b2;margin-top:4px}
+h1{font-size:32px;margin:10px 0 8px;line-height:1.06;color:#111827}
+.hero p{margin:0;color:#1d2e3b;font-size:15px;line-height:1.55;font-weight:900}
+.pills{gap:7px;margin-top:14px}
+.pill{background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.92);box-shadow:0 8px 16px rgba(52,95,130,.10)}
+.countdown{
+  position:absolute;
+  right:16px;
+  top:28px;
+  width:122px;
+  display:block;
+  border-radius:22px;
+  background:rgba(255,255,255,.82);
+  box-shadow:0 10px 24px rgba(53,96,130,.13);
+  padding:10px;
+}
+.countdown div:first-child{display:none}
+.countdown b{font-size:12px;color:#486575}
+.countdown span{font-size:14px;color:#111827}
+.hero .hero-weather{
+  position:absolute;
+  right:16px;
+  top:28px;
+  width:122px;
+  border-radius:22px;
+  background:rgba(255,255,255,.88);
+  box-shadow:0 10px 24px rgba(53,96,130,.13);
+  padding:10px;
+  text-align:center;
+  z-index:3;
+}
+.hero .hero-weather .big{font-size:24px;font-weight:1000;color:#111827}
+.hero .hero-weather small{display:block;color:#4b6070;font-weight:900}
+.top-boogi-reminder{
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:86px;
+  z-index:4;
+  border-radius:28px;
+  background:rgba(255,255,255,.92);
+  border:2px solid var(--yellow);
+  box-shadow:0 15px 32px rgba(44,84,120,.12);
+  padding:15px 92px 15px 18px;
+}
+.top-boogi-reminder:before{
+  content:"";
+  position:absolute;
+  left:86px;
+  top:-10px;
+  width:20px;height:20px;
+  background:rgba(255,255,255,.92);
+  border-left:2px solid var(--yellow);
+  border-top:2px solid var(--yellow);
+  transform:rotate(45deg);
+}
+.top-boogi-reminder b{font-size:18px;color:#111827}
+.top-boogi-reminder b span{color:#e6375c}
+.top-boogi-reminder p{font-size:13px;margin:8px 0 0;line-height:1.65;color:#425665;font-weight:900}
+.top-boogi-reminder img{position:absolute;right:8px;bottom:0;width:86px;height:112px;object-fit:cover;border-radius:22px}
+.quick-cats{
+  position:absolute;
+  left:16px;right:16px;bottom:16px;
+  z-index:3;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:6px;
+  background:rgba(255,255,255,.90);
+  border-radius:26px;
+  padding:10px 8px;
+  box-shadow:0 16px 32px rgba(40,83,120,.13);
+}
+.quick-cats div{text-align:center;font-weight:1000;font-size:11px;color:#253443}
+.quick-cats span{display:block;font-size:24px;margin-bottom:3px}
+.section{padding:15px 14px 0}
+.card{
+  background:rgba(255,255,255,.95);
+  border:1px solid rgba(214,237,252,.95);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+}
+.day-card-shell{
+  background:linear-gradient(180deg,#eff9ff,#ffffff);
+  border:1px solid #c9eaff;
+  border-radius:30px;
+  padding:14px 10px;
+  box-shadow:var(--shadow);
+}
+.day-head{align-items:center}
+.day-num{
+  width:66px;height:66px;border-radius:18px;
+  background:linear-gradient(180deg,#2a8ddd,#075fac);
+  box-shadow:0 12px 22px rgba(0,105,183,.24);
+  font-size:22px;
+}
+.day-head h2{font-size:18px;color:#111827}
+.day-head small{color:#0a63ae;font-weight:900}
+.weatherbox div{background:linear-gradient(135deg,#eef9ff,#ffffff);border:1px solid #cfeaff}
+.timeline:before{left:41px;background:#0a70c2;width:3px}
+.stop{grid-template-columns:80px 1fr;margin:12px 0}
+.time{font-size:13px;color:#086dbc;justify-content:center}
+.dot{border-color:#0a70c2;box-shadow:0 0 0 4px #e8f6ff}
+.place{
+  border-radius:20px;
+  border:1px solid #d7ecfb;
+  box-shadow:0 7px 18px rgba(39,88,122,.08);
+}
+.place button.with-photo{display:grid;grid-template-columns:124px 1fr;gap:12px;align-items:center;padding:12px}
+.spot-thumb{
+  width:124px;height:92px;
+  margin:0;
+  border-radius:16px;
+  background-size:cover;
+  background-position:center;
+}
+.place button.with-photo b{font-size:16px;color:#111827}
+.place button.with-photo .summary{font-size:13px;color:#536575;font-weight:800}
+.transfer{margin-left:80px;background:#eef8ff;border-color:#b8def6;color:#367596}
+.btn{background:#086dbc}
+.btn.alt{background:#fff1f6;color:#d8426a;border-color:#ffb8cb}
+.boogi-reminder{margin:20px 0 0}
+.bottom-nav{background:rgba(255,255,255,.92)}
+@media(max-width:420px){
+  .hero{padding-left:116px}
+  .boogi-icon{width:116px;height:174px}
+  .place button.with-photo{grid-template-columns:104px 1fr}
+  .spot-thumb{width:104px;height:82px}
+  .quick-cats span{font-size:21px}
+}
+
 </style>
 </head>
 <body>
@@ -222,50 +394,50 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
 
 <main>
 <section id="day1" class="page active section">
-  <article class="card">
+  <article class="card day-card-shell">
     <div class="day-head"><div class="day-num">D1</div><div><h2>6/4（四）海景藝術 × 南浦初見日</h2><small>機場早餐｜Arte Museum｜南浦｜樂天超市</small></div></div>
     <div class="chips"><span class="chip">🎫 Arte Museum PASS</span><span class="chip">💱 MoneyBox / 友利 / 國民</span></div>
     <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲轉晴｜24° / 18°</span></div><div><b>穿搭提醒</b><span>薄外套＋好走鞋</span></div></div>
     <div class="sticker-row"><span class="sticker">✈️ 抵達日</span><span class="sticker">🎨 藝術館</span><span class="sticker">🛍️ 南浦逛街</span><span class="sticker">🛒 樂天採買</span></div>
     <div class="timeline">
-      <div class="stop"><div class="time"><span class="dot"></span>06:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-airport/600/360')"></div><b>抵達金海機場</b><div class="summary">入境、領行李，準備第一餐。</div></button><div class="details">濟州航空 7C6154｜02:50 台北起飛 → 06:10 釜山抵達。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>06:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gimhae%20International%20Airport%20Station%20P1.jpg')"></div><b>抵達金海機場</b><div class="summary">入境、領行李，準備第一餐。</div></button><div class="details">濟州航空 7C6154｜02:50 台北起飛 → 06:10 釜山抵達。</div></div></div>
       <div class="transfer">🚶 步行約 12–15min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-soup/600/360')"></div><b>富人家牛腿骨豬肉湯飯</b><div class="summary">抵達後早餐，行李多抓 15 分鐘步行。</div></button><div class="details">推薦：牛腿骨豬肉湯飯、豬肉湯飯、血腸湯飯。<div class="btns"><a class="btn" href="https://naver.me/FfsduKvu" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Korean.cuisine-Dwaeji.gukbap-01.jpg')"></div><b>富人家牛腿骨豬肉湯飯</b><div class="summary">抵達後早餐，行李多抓 15 分鐘步行。</div></button><div class="details">推薦：牛腿骨豬肉湯飯、豬肉湯飯、血腸湯飯。<div class="btns"><a class="btn" href="https://naver.me/FfsduKvu" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩28,000–35,000｜50min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>10:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/digital-art-museum/600/360')"></div><b>Arte Museum（PASS）</b><div class="summary">建議停留 1.5–2 小時。</div></button><div class="details">必拍：FLOWER、WATERFALL、BEACH、MOON。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/ARTE%20MUSEUM%20Busan" target="_blank">🗺️ 開導航</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>10:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://artemuseum.com/images/og-image.jpg')"></div><b>Arte Museum（PASS）</b><div class="summary">建議停留 1.5–2 小時。</div></button><div class="details">必拍：FLOWER、WATERFALL、BEACH、MOON。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/ARTE%20MUSEUM%20Busan" target="_blank">🗺️ 開導航</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩9,000–12,000｜15min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-fish-market/600/360')"></div><b>札嘎其＋BIFF</b><div class="summary">新東亞市場 85、87 號海鮮攤。</div></button><div class="details">推薦：元祖糖餅、魚糕、海鮮、紅豆奶油艾草麻吉。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Jagalchi%20Market" target="_blank">🗺️ 札嘎其</a><a class="btn alt" href="https://map.naver.com/p/search/BIFF%20Square" target="_blank">BIFF</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-shopping-street/600/360')"></div><b>南浦商圈逛街</b><div class="summary">SPAO 可寄物、Olive Young、EPT、光復路。</div></button><div class="details">推薦：南浦洞雪濃湯、味贊王鹽烤肉、李在模 PIZZA 2號店。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/SPAO%20Nampo%20Busan" target="_blank">🗺️ SPAO 導航</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/lotte-department-store/600/360')"></div><b>樂天百貨 & 超市</b><div class="summary">Uniqlo、11F 空中花園休息。</div></button><div class="details">樂天超市滿 ₩100,000 可至服務台兌換購物袋。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Lotte%20Department%20Store%20Gwangbok%20Busan" target="_blank">🗺️ 樂天百貨</a><a class="btn alt" href="https://map.naver.com/p/search/Lotte%20Mart%20Gwangbok" target="_blank">🛒 樂天超市</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Jagalchi%20Fish%20Market.jpg')"></div><b>札嘎其＋BIFF</b><div class="summary">新東亞市場 85、87 號海鮮攤。</div></button><div class="details">推薦：元祖糖餅、魚糕、海鮮、紅豆奶油艾草麻吉。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Jagalchi%20Market" target="_blank">🗺️ 札嘎其</a><a class="btn alt" href="https://map.naver.com/p/search/BIFF%20Square" target="_blank">BIFF</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Busan%20Gwangbok-dong%20Street.jpg')"></div><b>南浦商圈逛街</b><div class="summary">SPAO 可寄物、Olive Young、EPT、光復路。</div></button><div class="details">推薦：南浦洞雪濃湯、味贊王鹽烤肉、李在模 PIZZA 2號店。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/SPAO%20Nampo%20Busan" target="_blank">🗺️ SPAO 導航</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Lotte%20Department%20Store%20Gwangbok%20Branch.jpg')"></div><b>樂天百貨 & 超市</b><div class="summary">Uniqlo、11F 空中花園休息。</div></button><div class="details">樂天超市滿 ₩100,000 可至服務台兌換購物袋。<div class="btns"><a class="btn" href="https://map.naver.com/p/search/Lotte%20Department%20Store%20Gwangbok%20Busan" target="_blank">🗺️ 樂天百貨</a><a class="btn alt" href="https://map.naver.com/p/search/Lotte%20Mart%20Gwangbok" target="_blank">🛒 樂天超市</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩28,000–38,000｜50min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>19:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/haeundae-hotel-ocean/600/360')"></div><b>Check in 海雲台民宿</b><div class="summary">釜山 Coco Beach。</div></button><div class="details">地址：海雲台海邊路 291 號水晶海灘 710。密碼：2489*。<div class="btns"><a class="btn" href="https://naver.me/xpjNTctd" target="_blank">🗺️ 民宿導航</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>19:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Busan-Haeundae-Beach-08.jpg')"></div><b>Check in 海雲台民宿</b><div class="summary">釜山 Coco Beach。</div></button><div class="details">地址：海雲台海邊路 291 號水晶海灘 710。密碼：2489*。<div class="btns"><a class="btn" href="https://naver.me/xpjNTctd" target="_blank">🗺️ 民宿導航</a></div></div></div></div>
     </div>
   </article>
 </section>
 
 <section id="day2" class="page section">
-  <article class="card">
+  <article class="card day-card-shell">
     <div class="day-head"><div class="day-num">D2</div><div><h2>6/5（五）列車 × 滑坡車冒險日</h2><small>膠囊列車｜Luge｜海岸列車｜汗蒸幕</small></div></div>
     <div class="chips"><span class="chip">🎫 Skyline Luge</span><span class="chip">🎫 海岸列車</span><span class="chip">🎫 Club D Oasis</span></div>
     <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲時晴｜27° / 18°</span></div><div><b>穿搭提醒</b><span>防曬＋備薄外套</span></div></div>
     <div class="sticker-row"><span class="sticker">🚃 膠囊列車</span><span class="sticker">🏎️ 滑坡車</span><span class="sticker">☕ 咖啡</span><span class="sticker">♨️ 溫泉</span></div>
     <div class="timeline">
-      <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/hotel-room-ocean/600/360')"></div><b>起床整理</b></button><div class="details">準備膠囊列車票券與 PASS。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>07:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Busan-Haeundae-Beach-04.jpg')"></div><b>起床整理</b></button><div class="details">準備膠囊列車票券與 PASS。</div></div></div>
       <div class="transfer">🚕 約 ₩5,000｜5min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>07:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/abalone-porridge/600/360')"></div><b>大海鮑魚粥</b><div class="summary">早餐。</div></button><div class="details"><div class="btns"><a class="btn" href="https://naver.me/FlBSlxZD" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>07:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Jeonbokjuk%20%28abalone%20porridge%29.jpg')"></div><b>大海鮑魚粥</b><div class="summary">早餐。</div></button><div class="details"><div class="btns"><a class="btn" href="https://naver.me/FlBSlxZD" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚶 步行 5min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>08:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-sky-capsule/600/360')"></div><b>天空膠囊列車（已預約）</b><div class="summary">尾浦 → 清沙浦，提前 15 分鐘抵達。</div></button><div class="details">建議拍海景座位與清沙浦沿線景色。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>08:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sky%20Capsule%20train%20at%20Haeundae%20Blueline%20Park%2C%20Busan.jpg')"></div><b>天空膠囊列車（已預約）</b><div class="summary">尾浦 → 清沙浦，提前 15 分鐘抵達。</div></button><div class="details">建議拍海景座位與清沙浦沿線景色。</div></div></div>
       <div class="transfer">🚕 約 ₩18,000–25,000｜25min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>09:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/skyline-luge/600/360')"></div><b>Skyline Luge Busan（PASS）</b></button><div class="details"><div class="btns"><a class="btn" href="https://naver.me/FBMKuD2V" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>09:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://busan.skylineluge.kr/media/2327/busan-gallery-1.jpg')"></div><b>Skyline Luge Busan（PASS）</b></button><div class="details"><div class="btns"><a class="btn" href="https://naver.me/FBMKuD2V" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩15,000–22,000｜20min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/grilled-seafood-korea/600/360')"></div><b>燈塔烤鰻烤扇貝</b><div class="summary">午餐。</div></button><div class="details">推薦：起司烤扇貝、炭烤海鰻、海鮮拉麵。<div class="btns"><a class="btn" href="https://naver.me/G3v9fhcP" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>13:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korea-cafe-coffee/600/360')"></div><b>DIART Coffee</b></button><div class="details">必吃：土耳其蜂蜜奶油麵包。<div class="btns"><a class="btn" href="https://naver.me/xG0fwicJ" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-dessert-cookies/600/360')"></div><b>Clamsand Busan</b></button><div class="details">貝殼奶油餅：常溫 5 天、冷藏 7 天、冷凍 1 個月，可帶上飛機。<div class="btns"><a class="btn" href="https://naver.me/GYDMoT8g" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-beach-train/600/360')"></div><b>海岸列車（PASS）</b></button><div class="details">清沙浦 → 尾浦。</div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>16:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-crab-food/600/360')"></div><b>Mipojip 尾浦家醬蟹</b></button><div class="details">美女生醃醬海鮮套餐：8種醃醬海鮮、石鍋飯、12種小菜、海帶湯。<div class="btns"><a class="btn" href="https://naver.me/G5ktLJlu" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-spa-sauna/600/360')"></div><b>Club D Oasis（PASS）</b></button><div class="details">戶外溫泉與汗蒸幕共 4 小時。食堂推薦：甜米釀、焗蛋。3歲以下幼童免費。<div class="btns"><a class="btn" href="https://naver.me/FfsdlAfH" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Grilled%20Scallops.jpg')"></div><b>燈塔烤鰻烤扇貝</b><div class="summary">午餐。</div></button><div class="details">推薦：起司烤扇貝、炭烤海鰻、海鮮拉麵。<div class="btns"><a class="btn" href="https://naver.me/G3v9fhcP" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>13:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Cappuccino%20at%20Sightglass%20Coffee.jpg')"></div><b>DIART Coffee</b></button><div class="details">必吃：土耳其蜂蜜奶油麵包。<div class="btns"><a class="btn" href="https://naver.me/xG0fwicJ" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Butter%20cookies.jpg')"></div><b>Clamsand Busan</b></button><div class="details">貝殼奶油餅：常溫 5 天、冷藏 7 天、冷凍 1 個月，可帶上飛機。<div class="btns"><a class="btn" href="https://naver.me/GYDMoT8g" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sky%20Capsule%20train%20at%20Haeundae%20Blueline%20Park%2C%20Busan.jpg')"></div><b>海岸列車（PASS）</b></button><div class="details">清沙浦 → 尾浦。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>16:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Ganjang%20gejang.jpg')"></div><b>Mipojip 尾浦家醬蟹</b></button><div class="details">美女生醃醬海鮮套餐：8種醃醬海鮮、石鍋飯、12種小菜、海帶湯。<div class="btns"><a class="btn" href="https://naver.me/G5ktLJlu" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Jjimjilbang%20Common%20Room.jpg')"></div><b>Club D Oasis（PASS）</b></button><div class="details">戶外溫泉與汗蒸幕共 4 小時。食堂推薦：甜米釀、焗蛋。3歲以下幼童免費。<div class="btns"><a class="btn" href="https://naver.me/FfsdlAfH" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚶 步行 8min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>21:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/hotel-night-view/600/360')"></div><b>民宿休息</b></button><div class="details">海雲台消夜：名品糖餅、60雞炸雞、水邊最高豬肉湯飯。</div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>21:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Haeundae%20Beach%20in%20Busan.jpg')"></div><b>民宿休息</b></button><div class="details">海雲台消夜：名品糖餅、60雞炸雞、水邊最高豬肉湯飯。</div></div></div>
     </div>
   </article>
     <div class="boogi-reminder">
@@ -282,23 +454,23 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
 </section>
 
 <section id="day3" class="page section">
-  <article class="card">
+  <article class="card day-card-shell">
     <div class="day-head"><div class="day-num">D3</div><div><h2>6/6（六）西面購物 × 廣安里夜景日</h2><small>釜田市場｜西面｜廣安里無人機秀</small></div></div>
     <div class="chips"><span class="chip">🎆 20:00 無人機秀</span><span class="chip">🛍️ 西面購物</span></div>
     <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲時晴｜26° / 18°</span></div><div><b>穿搭提醒</b><span>逛街好走鞋</span></div></div>
     <div class="sticker-row"><span class="sticker">🍙 市場早餐</span><span class="sticker">🛍️ 西面</span><span class="sticker">🥩 烤肉</span><span class="sticker">🌉 夜景</span></div>
     <div class="timeline">
-      <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-market-food/600/360')"></div><b>釜田市場早餐</b></button><div class="details">推薦：明卵飯捲、手工排骨肉餅、魚板、韓式熱湯。<div class="btns"><a class="btn" href="https://naver.me/Gntd2vKt" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Jagalchi%20Market%20Display.jpg')"></div><b>釜田市場早餐</b></button><div class="details">推薦：明卵飯捲、手工排骨肉餅、魚板、韓式熱湯。<div class="btns"><a class="btn" href="https://naver.me/Gntd2vKt" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚶 步行 10min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>10:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/seomyeon-shopping/600/360')"></div><b>西面逛街</b></button><div class="details">Olive Young 西面旗艦店、Object、地下街、Musinsa。<div class="btns"><a class="btn" href="https://naver.me/5t7clJmy" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>12:40</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-pork-stew/600/360')"></div><b>山莊1988燉排骨</b></button><div class="details">推薦：馬鈴薯排骨湯。<div class="btns"><a class="btn" href="https://naver.me/GQGtiSBz" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/botanical-cafe/600/360')"></div><b>LaSoop</b></button><div class="details">三層樓大自然系咖啡廳休息。<div class="btns"><a class="btn" href="https://naver.me/x0O2IXGM" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-bbq-pork/600/360')"></div><b>83 Haechi 烤肉（現場排隊）</b></button><div class="details">推薦：Special Pork Belly、Pork Rinds、橫隔膜。<div class="btns"><a class="btn" href="https://naver.me/x9VnTzIz" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>17:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/korean-ribs-food/600/360')"></div><b>釜山烤肋排（外帶）</b></button></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>10:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Busan%20Seomyeon.jpg')"></div><b>西面逛街</b></button><div class="details">Olive Young 西面旗艦店、Object、地下街、Musinsa。<div class="btns"><a class="btn" href="https://naver.me/5t7clJmy" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>12:40</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gamjatang.jpg')"></div><b>山莊1988燉排骨</b></button><div class="details">推薦：馬鈴薯排骨湯。<div class="btns"><a class="btn" href="https://naver.me/GQGtiSBz" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Coffee%20shop%20interior.jpg')"></div><b>LaSoop</b></button><div class="details">三層樓大自然系咖啡廳休息。<div class="btns"><a class="btn" href="https://naver.me/x0O2IXGM" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>15:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20barbeque-Samgyeopsal-08.jpg')"></div><b>83 Haechi 烤肉（現場排隊）</b></button><div class="details">推薦：Special Pork Belly、Pork Rinds、橫隔膜。<div class="btns"><a class="btn" href="https://naver.me/x9VnTzIz" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>17:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Kalbi%20%28Korean%20BBQ%29.jpg')"></div><b>釜山烤肋排（外帶）</b></button></div></div>
       <div class="transfer">🚕 約 ₩18,000–25,000｜30min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/gwangalli-beach/600/360')"></div><b>廣安里海水浴場</b></button><div class="details">推薦：Nasari Sigdang 海鮮麵、La Feuille 麵包、All Sunday Bagel。<div class="btns"><a class="btn" href="https://naver.me/5imZPxdQ" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>20:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/drone-show-night/600/360')"></div><b>無人機表演</b></button><div class="details">Olive Young 廣安里店前沙灘是最佳景觀位置，建議提早卡位。<div class="btns"><a class="btn" href="https://naver.me/Ge7ND4i6" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>20:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-night-market/600/360')"></div><b>Millac The Market</b></button><div class="details">複合式新潮商場，餐廳咖啡廳、服飾配件。<div class="btns"><a class="btn" href="https://naver.me/5fdFO5GP" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>18:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gwangalli%20Beach%20and%20Gwangan%20Bridge%20Busan.jpg')"></div><b>廣安里海水浴場</b></button><div class="details">推薦：Nasari Sigdang 海鮮麵、La Feuille 麵包、All Sunday Bagel。<div class="btns"><a class="btn" href="https://naver.me/5imZPxdQ" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>20:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gwangalli%20Beach%20and%20Gwangan%20Bridge%20Busan.jpg')"></div><b>無人機表演</b></button><div class="details">Olive Young 廣安里店前沙灘是最佳景觀位置，建議提早卡位。<div class="btns"><a class="btn" href="https://naver.me/Ge7ND4i6" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>20:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gwangalli%20Beach%20and%20Gwangan%20Bridge%20Busan.jpg')"></div><b>Millac The Market</b></button><div class="details">複合式新潮商場，餐廳咖啡廳、服飾配件。<div class="btns"><a class="btn" href="https://naver.me/5fdFO5GP" target="_blank">🗺️ Naver Map</a></div></div></div></div>
     </div>
   </article>
     <div class="boogi-reminder">
@@ -315,21 +487,21 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
 </section>
 
 <section id="day4" class="page section">
-  <article class="card">
+  <article class="card day-card-shell">
     <div class="day-head"><div class="day-num">D4</div><div><h2>6/7（日）海景收尾 × 港灣散步日</h2><small>Duplit｜松島纜車｜Port Village｜返台</small></div></div>
     <div class="chips"><span class="chip">🎫 松島海上纜車 PASS</span><span class="chip">✈️ BR163 19:10</span><span class="chip">🧳 行李寄放</span></div>
     <div class="weatherbox"><div><b>當日預估天氣</b><span>多雲時晴｜22° / 16°</span></div><div><b>穿搭提醒</b><span>薄外套＋輕便</span></div></div>
     <div class="sticker-row"><span class="sticker">☕ 早午餐</span><span class="sticker">🚡 纜車</span><span class="sticker">🏖️ 港灣市集</span><span class="sticker">✈️ 返台</span></div>
     <div class="timeline">
-      <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/brunch-cafe-korea/600/360')"></div><b>Duplit 早午餐</b></button><div class="details">推薦：Duplit 早午餐拼盤、蒜香鮮菇奶油蝦、手工蛋糕。<div class="btns"><a class="btn" href="https://naver.me/GgUsGRB7" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>09:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Brunch%20with%20eggs%20and%20toast.jpg')"></div><b>Duplit 早午餐</b></button><div class="details">推薦：Duplit 早午餐拼盤、蒜香鮮菇奶油蝦、手工蛋糕。<div class="btns"><a class="btn" href="https://naver.me/GgUsGRB7" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩25,000–35,000｜40min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/tourist-information-korea/600/360')"></div><b>釜山旅遊諮詢處</b></button><div class="details">寄放行李 10:00–17:00。<div class="btns"><a class="btn" href="https://naver.me/5yhYRxxT" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>11:30</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Busan%20Station%202019.jpg')"></div><b>釜山旅遊諮詢處</b></button><div class="details">寄放行李 10:00–17:00。<div class="btns"><a class="btn" href="https://naver.me/5yhYRxxT" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩10,000–15,000｜20min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/songdo-cable-car/600/360')"></div><b>松島纜車（PASS）</b></button><div class="details">松島灣站 → 松島 Sky Park 站，單趟 15–20 分鐘。可順遊龍宮雲橋 ₩1,000，咖啡廳 EL 16.52。<div class="btns"><a class="btn" href="https://naver.me/5Nex6HaN" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>12:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Korea-Busan-Cable.car-01.jpg')"></div><b>松島纜車（PASS）</b></button><div class="details">松島灣站 → 松島 Sky Park 站，單趟 15–20 分鐘。可順遊龍宮雲橋 ₩1,000，咖啡廳 EL 16.52。<div class="btns"><a class="btn" href="https://naver.me/5Nex6HaN" target="_blank">🗺️ Naver Map</a></div></div></div></div>
       <div class="transfer">🚕 約 ₩8,000–12,000｜15min</div>
-      <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/busan-port-market/600/360')"></div><b>Port Village Busan</b></button><div class="details">歐洲港邊市集 × 小紅書打卡市集 × 韓國文青夜市，釜山港 1 號碼頭。<div class="btns"><a class="btn" href="https://naver.me/5UV30Bed" target="_blank">🗺️ Naver Map</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/airport-luggage/600/360')"></div><b>取行李 → 前往機場</b></button><div class="details">計程車約 30 分鐘，建議 16:40 抵達金海機場。<div class="btns"><a class="btn" href="https://naver.me/GahetpP4" target="_blank">✈️ 金海機場導航</a></div></div></div></div>
-      <div class="stop"><div class="time"><span class="dot"></span>19:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://picsum.photos/seed/airplane-window-sunset/600/360')"></div><b>BR163 起飛回台北</b></button><div class="details">長榮航空｜釜山 19:10 → 台北 20:35。金海機場國際航廈 Terminal I，桃園通常停靠第二航廈。<div class="btns"><a class="btn" href="https://naver.me/GahetpP4" target="_blank">✈️ 金海機場</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>14:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Busan%20Port%20International%20Passenger%20Terminal.jpg')"></div><b>Port Village Busan</b></button><div class="details">歐洲港邊市集 × 小紅書打卡市集 × 韓國文青夜市，釜山港 1 號碼頭。<div class="btns"><a class="btn" href="https://naver.me/5UV30Bed" target="_blank">🗺️ Naver Map</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>16:00</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gimhae%20International%20Airport%20Station%20P1.jpg')"></div><b>取行李 → 前往機場</b></button><div class="details">計程車約 30 分鐘，建議 16:40 抵達金海機場。<div class="btns"><a class="btn" href="https://naver.me/GahetpP4" target="_blank">✈️ 金海機場導航</a></div></div></div></div>
+      <div class="stop"><div class="time"><span class="dot"></span>19:10</div><div class="place"><button class="with-photo"><div class="spot-thumb" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Gimhae%20International%20Airport%20Station%20P1.jpg')"></div><b>BR163 起飛回台北</b></button><div class="details">長榮航空｜釜山 19:10 → 台北 20:35。金海機場國際航廈 Terminal I，桃園通常停靠第二航廈。<div class="btns"><a class="btn" href="https://naver.me/GahetpP4" target="_blank">✈️ 金海機場</a></div></div></div></div>
     </div>
   </article>
     <div class="boogi-reminder">
@@ -364,6 +536,9 @@ h1{font-size:31px;margin:8px 0 6px;line-height:1.06}
       <a class="pin" style="left:18%;top:30%;" href="https://naver.me/FfsduKvu" target="_blank"><i><span>🍲</span></i><b>富人家</b></a>
     </div>
     <div class="note">此為手機版行程總覽示意圖；點擊圖釘或下方清單可直接開啟 Naver Map 導航。</div>
+
+    
+    <div class="note">📷 照片校正：公共景點優先改用 Wikimedia Commons、官方或旅遊官方來源；餐廳若無穩定可嵌入官方照片，使用對應料理類型代表圖，實際店面請以 Naver Map 按鈕照片為準。</div>
 
     <div class="route-list">
       <a href="https://naver.me/FfsduKvu" target="_blank">🍲 富人家牛腿骨豬肉湯飯 <small>Naver</small></a>
